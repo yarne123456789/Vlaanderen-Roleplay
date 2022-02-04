@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
         var response = "**Bot commands**\r\n\n";
         var general = "**__Algemene commands__**\r\n";
         var info = "\n**__Staff__**\r\n";
-        var slash = "\n**__Slash__**(momenteel enigste command(help)\r\n";
+        var slash = "\n**__Slash__**(momenteel enigste command(/leve)\r\n";
 
 
 
