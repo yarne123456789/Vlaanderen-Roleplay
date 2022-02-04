@@ -7,8 +7,8 @@ const fs = require("fs");
 const { REST } = require('@discordjs/rest');
 const { Routes, EmbedType } = require('discord-api-types/v9');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
-const token = process.env.token
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_INTEGRATIONS] });
+const token = "OTE2Nzk2OTYyMjk1MTQ0NDg4.YavXtQ.FR5Q2dPaFZNm51G0OY408wtns4g"
 client.commands = new Collection();
 client.slashCommands = new Collection();
 const slashCommands = [];
@@ -80,9 +80,11 @@ client.on('interactionCreate', async interaction => {
 
 		} catch (err) {
 			await interaction.reply({ content: "Er liep iets mis.", ephemeral: true });
+			console.log(err);
 		}
 
-	}
+	}  
+	
 })
 
 client.on('messageCreate', async message => {
@@ -121,7 +123,7 @@ function RandomXP(message) {
 
 	var randomXP = Math.floor(Math.random() * 15) + 1;
 
-	
+
 
 	var iduser = message.author.id;
 
@@ -150,11 +152,11 @@ function RandomXP(message) {
 				if (err) return console.log('Er ging iets fout bij het level systeem.');
 			});
 		var embedLevel = new MessageEmbed()
-		.setDescription(`***NIEUW LEVEL*** ${message.member.displayName}`)
-		.setColor('#00FF00')
-		.addField("Nieuw level:", LevelFile[iduser].level.toString());
+			.setDescription(`***NIEUW LEVEL*** ${message.member.displayName}`)
+			.setColor('#00FF00')
+			.addField("Nieuw level:", LevelFile[iduser].level.toString());
 
-		message.channel.send({embeds: [embedLevel]})
+		message.channel.send({ embeds: [embedLevel] })
 
 	}
 
