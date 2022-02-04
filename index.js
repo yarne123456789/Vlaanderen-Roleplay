@@ -8,7 +8,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes, EmbedType } = require('discord-api-types/v9');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
-
+const token = "OTE2Nzk2OTYyMjk1MTQ0NDg4.YavXtQ.96fvXAvCXjBacwaqxxSFcxGf7yw"//process.env.token
 client.commands = new Collection();
 client.slashCommands = new Collection();
 const slashCommands = [];
@@ -46,7 +46,7 @@ client.once("ready", () => {
 
 	let clientId = "916796962295144488";
 
-	const rest = new REST({ version: '9' }).setToken(process.env.token);//process.env.token
+	const rest = new REST({ version: '9' }).setToken(token);//process.env.token
 
 	(async () => {
 		try {
@@ -159,4 +159,4 @@ function RandomXP(message) {
 	}
 
 }
-client.login(process.env.token);//process.env.token
+client.login(token);//process.env.token

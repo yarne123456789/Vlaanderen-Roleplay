@@ -37,6 +37,7 @@ module.exports = {
 
         } catch (err) {
             interaction.reply({ content: 'Geen gegevens gevonden.' });
+            return;
         }
 
 
@@ -45,10 +46,4 @@ module.exports = {
 
     }
 
-}
-
-module.exports.slashHelp = {
-    name: "level",
-    category: "general",
-    description: "Geef je level weer."
 }
