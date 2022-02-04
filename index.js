@@ -8,7 +8,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes, EmbedType } = require('discord-api-types/v9');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_INTEGRATIONS] });
-const token = "OTE2Nzk2OTYyMjk1MTQ0NDg4.YavXtQ.FR5Q2dPaFZNm51G0OY408wtns4g"
+const token = process.env.token
 client.commands = new Collection();
 client.slashCommands = new Collection();
 const slashCommands = [];
