@@ -83,8 +83,8 @@ client.on('interactionCreate', async interaction => {
 			console.log(err);
 		}
 
-	}  
-	
+	}
+
 })
 
 client.on('messageCreate', async message => {
@@ -101,20 +101,21 @@ client.on('messageCreate', async message => {
 		RandomXP(message);
 
 	}
+	if (message.content.startsWith(prefix)) {
+		const commandData = client.commands.get(command.slice(prefix.length));
 
-	const commandData = client.commands.get(command.slice(prefix.length));
+		if (!commandData) return;
 
-	if (!commandData) return;
+		var arguments = messageArray.slice(1);
 
-	var arguments = messageArray.slice(1);
+		try {
 
-	try {
+			commandData.run(client, message, arguments);
 
-		commandData.run(client, message, arguments);
-
-	} catch (error) {
-		console.log(error),
-			await message.reply("Er was een error tijden het uitvoeren van deze command.");
+		} catch (error) {
+			console.log(error),
+				await message.reply("Er was een error tijden het uitvoeren van deze command.");
+		}
 	}
 
 });
