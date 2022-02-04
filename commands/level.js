@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 
     var levelFile = JSON.parse(fs.readFileSync('./data/levels.json'));
 
-    var userID = message.user.id;
+    var userID = message.member.id;
 
     try {
 
@@ -16,14 +16,14 @@ module.exports.run = async (client, message, args) => {
         if (nextLevelXP == 0) nextLevelXP == 100;
 
         const rank = new canvacord.Rank()
-            .setAvatar(message.user.displayAvatarURL({ dynamic: false, format: 'png' }))
+            .setAvatar(message.member.displayAvatarURL({ dynamic: false, format: 'png' }))
             .setCurrentXP(levelFile[userID].xp)
             .setLevel(levelFile[userID].level)
             .setRequiredXP(nextLevelXP)
             .setProgressBar("#FFA500", "COLOR")
-            .setUsername(message.user.username)
-            .setDiscriminator(message.user.discriminator);
-
+            .setUsername(message.member.username)
+            .setDiscriminator(message.member.discriminator);
+        console.log(userID)
         rank.build().then(data => {
             const attachment = new MessageAttachment(data, "RankCard.png");
             message.reply({ files: [attachment] });
@@ -31,6 +31,7 @@ module.exports.run = async (client, message, args) => {
 
 
     } catch (err) {
+        console.log(userID)
         message.reply({ content: 'Geen gegevens gevonden.' });
     }
 

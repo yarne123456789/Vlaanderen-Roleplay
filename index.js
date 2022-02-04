@@ -46,7 +46,7 @@ client.once("ready", () => {
 
 	let clientId = "916796962295144488";
 
-	const rest = new REST({ version: '9' }).setToken(botConfig.token);
+	const rest = new REST({ version: '9' }).setToken(process.env.token);//process.env.token
 
 	(async () => {
 		try {
@@ -159,4 +159,4 @@ function RandomXP(message) {
 	}
 
 }
-client.login(process.env.token)
+client.login(process.env.token);//process.env.token
