@@ -46,3 +46,9 @@ module.exports = {
     }
 
 }
+
+module.exports.slashHelp = {
+    name: "level",
+    category: "general",
+    description: "Geef je level weer."
+}
