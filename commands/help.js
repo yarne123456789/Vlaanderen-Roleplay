@@ -22,9 +22,6 @@ module.exports.run = async (client, message, args) => {
                 case "info":
                     info += `${prefix}${command.help.name} - ${command.help.description}\r\n`;
                     break;
-                case "slash":
-                    slash += `/${command.slashHelp.name} - ${command.slashHelp.description}\r\n`;
-                    break;
             }
 
 
